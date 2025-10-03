@@ -1,9 +1,9 @@
 import { useContext, useEffect } from "react";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { DataContext } from "../Provider/DataContext";
+import Category from "./Category";
 
 const Carousel = () => {
   const { data, fetchAllProducts } = useContext(DataContext);
@@ -11,51 +11,6 @@ const Carousel = () => {
   useEffect(() => {
     fetchAllProducts();
   }, []);
-
-  const SamplePrevArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        onClick={onClick}
-        className={`arrow ${className}`}
-        style={{ zIndex: 3 }}
-      >
-        <AiOutlineArrowLeft
-          className="arrows"
-          style={{
-            ...style,
-            display: "block",
-            borderRadius: "50px",
-            background: "#f53347",
-            color: "white",
-            position: "absolute",
-            padding: "2px",
-            left: "50px",
-          }}
-        />
-      </div>
-    );
-  };
-  const SampleNextArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <div onClick={onClick} className={`arrow ${className}`}>
-        <AiOutlineArrowRight
-          className="arrows"
-          style={{
-            ...style,
-            display: "block",
-            borderRadius: "50px",
-            background: "#f53347",
-            color: "white",
-            position: "absolute",
-            padding: "2px",
-            right: "50px",
-          }}
-        />
-      </div>
-    );
-  };
 
   var settings = {
     dots: false,
@@ -66,8 +21,6 @@ const Carousel = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     pauseOnHover: false,
-    nextArrow: <SampleNextArrow to="next" />,
-    prevArrow: <SamplePrevArrow to="prev" />,
   };
 
   return (
@@ -106,6 +59,8 @@ const Carousel = () => {
           );
         })}
       </Slider>
+
+      <Category/>
     </div>
   );
 };
