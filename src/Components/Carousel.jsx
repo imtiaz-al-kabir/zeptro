@@ -24,13 +24,13 @@ const Carousel = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-hidden ">
       <Slider {...settings}>
         {data?.map((item, index) => {
           return (
             <div
               key={index}
-              className="bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] -z-10"
+              className="bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] -z-10 md:py-18"
             >
               <div className="h-[600px] flex flex-col md:flex-row gap-10 justify-center  my-20 md:my-0 items-center px-4">
                 <div className="md:space-y-6 space-y-3">
@@ -51,7 +51,7 @@ const Carousel = () => {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="rounded-full size-[500px]  px-10 hover:scale-105 transition-all shadow-2xl shadow-red-400"
+                    className="rounded-full size-[250px] md:size-[500px]   object-contain hover:scale-105 transition-all shadow-2xl shadow-red-400"
                   />
                 </div>
               </div>
@@ -60,7 +60,7 @@ const Carousel = () => {
         })}
       </Slider>
 
-      <Category/>
+      <Category />
     </div>
   );
 };
